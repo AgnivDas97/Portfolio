@@ -3,313 +3,1104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mediaqueries.css">
+
+    <!-- SEO Meta Tags -->
+    <title>Agniv Das | Full Stack Developer 💻</title>
+    <meta name="description" content="Full Stack Developer portfolio showcasing projects, skills, and contact information.">
+    <meta name="keywords" content="developer, portfolio, full stack, JavaScript, React, Node.js">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        section {
+            padding: 60px 10%; /* Reduced spacing between sections */
+            min-height: auto; /* Prevents excessive vertical gaps */
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        h2 { font-size: 2rem; margin-bottom: 20px; }
+
+        p { color: #7b7b7b; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        body.scrolled nav {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .menu-toggle {
+            display: none; /* Hide hamburger icon on desktop */
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(138, 138, 138);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: #007bff; }
+
+        #hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            flex-direction: row;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: column; /* Photo above section */
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #about {
+            padding-top: 40px; /* Adjust vertical position perfectly */
+        }
+
+        .about-profile {
+            position: relative;
+            top: -10px; /* Fine position adjustment */
+            margin-bottom: 10px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ddd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-profile:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border-color: #007bff;
+        }
+
+        .about-text {
+            max-width: 700px;
+        }
+
+        .hero-profile {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ddd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-profile:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border-color: #007bff;
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        /* Fix download button position */
+        .hero-text a {
+            display: inline-block;
+            margin-top: 18px;
+        }
+
+        #hero {
+            align-items: center; /* keep button aligned with text and image */
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 30px;
+            border: 1px solid black;
+            background: black;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .timeline .card {
+            margin-bottom: 30px; /* Space between experiences */
+            border-left: 4px solid #007bff;
+            position: relative;
+        }
+
+        .timeline .card ul {
+            margin-top: 10px;
+            padding-left: 18px;
+        }
+
+        .timeline .card li {
+            margin-bottom: 6px;
+        }
+
+        .blog-slider {
+            display: flex;
+            gap: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-track {
+            display: flex;
+            gap: 20px;
+            animation: scrollBlogs 20s linear infinite;
+        }
+
+        @keyframes scrollBlogs {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: black;
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(0,0,0,0.4);
+        }
+
+        .card {
+            padding: 25px;
+            border-radius: 18px;
+            background: #f8f8f8;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .skill-bar { margin-bottom: 18px; }
+        .skill-bar span { font-weight: 600; }
+
+        .bar {
+            height: 8px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .progress { height: 100%; background: black; }
+
+        .dark-mode { background: #121212; color: white; }
+        .dark-mode nav { background: #1f1f1f; }
+        .dark-mode .card { background: #1e1e1e; }
+
+        .dark-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 16px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 2000;
+        }
+
+        footer { text-align: center; padding: 25px; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.6s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ff6b6b, #6c5ce7, #00cec9);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 6s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        
+
+        .blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: blobMove 20s infinite alternate ease-in-out;
+        }
+
+        .blob1 { background: #6c5ce7; top: 10%; left: 5%; }
+        .blob2 { background: #00cec9; bottom: 10%; right: 5%; }
+
+        @keyframes blobMove {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(80px, -60px) scale(1.2); }
+        }
+
+        /* Floating stickers animation */
+        .sticker {
+            position: fixed;
+            font-size: 26px;
+            pointer-events: none;
+            animation: floatSticker 8s linear infinite;
+            opacity: 0.8;
+            z-index: 0;
+        }
+
+        @keyframes floatSticker {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Contact layout */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact form */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            padding: 12px 16px;
+            border-radius: 50%;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+            display: none;
+            z-index: 2000;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                display: none;
+            }
+
+            .nav-links.active { display: flex; }
+
+            .menu-toggle {
+                display: block;
+                font-size: 26px;
+                cursor: pointer;
+            }
+
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        /* Skill colors based on level */
+.progress {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+/* Advanced / Experienced */
+.progress.expert {
+    background: linear-gradient(90deg, #7bed9f, #caffbf);
+}
+
+/* Intermediate */
+.progress.intermediate {
+    background: linear-gradient(90deg, #ffd6a5, #ffe8a1);
+}
+
+/* Basic */
+.progress.basic {
+    background: linear-gradient(90deg, #ffadad, #ffd6d6);
+}
+
+    </style>
 </head>
+
 <body>
-    <nav id="desktop-nav">
-        <div class="logo">Agniv Das</div>
+
+
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<button class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+<button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+<nav>
+    <div class="logo">Agniv Das</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="hero" class="fade-in">
+
+    <!-- Profile Image -->
+    <img src="./assets/profile-pic.png" alt="Profile Photo" class="hero-profile">
+
+    <div class="hero-text">
+    <h1 class="gradient-text">Hi, I'm AGNIV DAS 🦸</h1>
+    <h2>Full Stack Developer</h2>
+    <p>I’m a Senior Software Engineer with 4+ years of experience in front-end development and 2+ years in full-stack development. I specialize in building scalable, high-performance, and user-friendly web applications.
+    <!-- Resume download -->
+    <a href="resume.pdf" download>
+        <button class="btn">Download Resume</button>
+    </a>
+    </div>
+
+</section>
+
+<section id="experience" class="fade-in">
+    <h2>Experience</h2>
+
+    <div class="timeline">
+
+        <div class="card">
+            <h3>Senior Software Engnieer</h3>
+            <p><strong>Company:</strong> IPSOS MMA</p>
+            <p><strong>Duration:</strong> May 2025 – Present</p>
+            <p><ul>
+                <li>Lead development of <strong>scalable </strong>full-stack features using React.js</li>
+                <li>Mentored junior developers on code best practices and project workflows</li>
+                <li>Architected reusable front-end components using <strong>React Hooks and Context
+API</strong></li>
+<li>Improved development workflow by integrating automated testing and linting
+into the CI/CD pipeline</li>
+<li>Lead development of UI scalable full-stack features using React.js, resulting in
+a full increase in <strong>application performance</strong></li>
+            </ul></p>
+        </div>
+
+        <div class="card">
+            <h3>Software Engineer</h3>
+            <p><strong>Company:</strong> IPSOS MMA</p>
+            <p><strong>Duration:</strong> Oct 2021 – May 2025</p>
+            <p><ul>
+                <li>Developed a Dynamic Full-Stack Analytics Dashboard utilizing <strong>React.js for
+the front-end, Node.js/Express for the back-end</strong>, and MongoDB/PostgreSQL</li>
+                <li>Implemented Full Web Page Navigation System with React Router and
+server-side routing</li>
+                <li><strong>Optimized Application Performance</strong> through lazy loading, server-side
+rendering (SSR), and database query optimization
+</li>
+<li>Designed and Developed Modular Side Panel Navigation with advanced
+authentication systems</li>
+<li>Built Full-Stack <strong>CRUD </strong>Functionality supported by <strong>RESTful APIs</strong></li>
+<li>Applied Functional Programming Principles using React hooks and reusable
+components</li>
+<li>Developed a full-stack analytics dashboard used by <strong>361 users</strong>, improving
+data accessibility for decision-making at IPSOS MMA
+</li>
+            </ul></p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section id="skills" class="fade-in">
+    <h2>Skills</h2>
+
+    <!-- FRONTEND -->
+    <h3 style="margin-top:30px;">Frontend Development</h3>
+
+    <div class="skill-bar">
+        <span>⚛️ React JS — Experienced</span>
+        <div class="bar">
+            <div class="progress expert" data-width="90%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>📄 HTML — Experienced</span>
+        <div class="bar">
+            <div class="progress expert" data-width="95%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🎨 CSS — Experienced</span>
+        <div class="bar">
+            <div class="progress expert" data-width="92%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🟨 JavaScript — Basic</span>
+        <div class="bar">
+            <div class="progress basic" data-width="60%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🔷 TypeScript — Basic</span>
+        <div class="bar">
+            <div class="progress basic" data-width="55%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🎨 Material UI — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="75%"></div>
+        </div>
+    </div>
+
+
+    <!-- BACKEND -->
+    <h3 style="margin-top:35px;">Backend Development</h3>
+
+    <div class="skill-bar">
+        <span>🟢 Node JS — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="80%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🚀 Express JS — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="78%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🐍 Python — Experienced</span>
+        <div class="bar">
+            <div class="progress expert" data-width="88%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>🗄️ SQL — Basic</span>
+        <div class="bar">
+            <div class="progress basic" data-width="60%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>⚙️ .NET — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="70%"></div>
+        </div>
+    </div>
+
+
+    <!-- TOOLS -->
+    <h3 style="margin-top:35px;">Tools & Platforms</h3>
+
+    <div class="skill-bar">
+        <span>🔧 Git — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="80%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>📦 BitBucket — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="75%"></div>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <span>📋 Jira — Intermediate</span>
+        <div class="bar">
+            <div class="progress intermediate" data-width="78%"></div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="education" class="fade-in">
+    <h2>Education</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Bachelor of Technology (B.Tech) in ECE</h3>
+            <p><strong>College:</strong> Techno Engineering College Banipur</p>
+            <p><strong>Year:</strong> 2016 – 2020</p>
+            <p><strong>Percentage / CGPA:</strong> 7.2 CGPA</p>
+            <p>B.Tech as Electronics and Communication Engineering</p>
+        </div>
+
+        <div class="card">
+            <h3>Higher Secondary Education (12th)</h3>
+            <p><strong>School:</strong> WBCHSE</p>
+            <p><strong>Year:</strong> 2014 – 2016</p>
+            <p><strong>Stream:</strong> Science</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="certifications" class="fade-in">
+    <h2>Certifications</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>AWS Certifications</h3>
+            <p><strong>Platform:</strong> Amazon Web Server Platform</p>
+            <p><strong>Year:</strong> 2024</p>
+            <p>AWS (amazon web server) storage </p>
+        </div>
+
+        <div class="card">
+            <h3>ChatGPT and AI hacks</h3>
+            <p><strong>Platform:</strong> Skill nation</p>
+            <p><strong>Year:</strong> 2023</p>
+            <p>MS Office AI tools, chatGPT promt coding, Vide coding, problem-solving.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="projects" class="fade-in">
+    <h2>Projects</h2>
+
+    <div style="margin-bottom:20px;">
+        <input type="text" id="projectSearch" placeholder="Search projects..." onkeyup="searchProjects()" style="padding:10px; width:100%; max-width:300px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc;">
+        <button class="btn" onclick="filterProjects('all')">All</button>
+        <button class="btn" onclick="filterProjects('web')">Web</button>
+        <button class="btn" onclick="filterProjects('backend')">Backend</button>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="./assets/ChatBotApplication.png" alt="Chat App Dashboard" class="project-img">
+            <h3 data-category="web">Real-Time Chat App</h3>
+            <p>MERN Application (MongoDB, Express JS, React JS, Node JS) </p>
+            <p>Socket.io chat application with authentication.</p>
+            <a href="https://github.com/AgnivDas97/Real-Time-ChatApplication" target="_blank">
+                <button class="btn">View Project</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <img src="./assets/typeflow.jpeg" alt="E-Commerce Dashboard" class="project-img">
+            <h3 data-category="web">Type Flow</h3>
+            <p>Full-stack typing speed test application</p>
+            <p>MERN Application (MongoDB, Express JS, React JS, Node JS) </p>
+            <a href="https://github.com/AgnivDas97/TypeFlow.git" target="_blank">
+                <button class="btn">View Project</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <img src="./assets/products-List.PNG" alt="Admin Dashboard" class="project-img">
+            <h3 data-category="backend">Store Product Counts</h3>
+            <p>.NET Application (Using .Net Core 3.1 Web API as a target framework)</p>
+            <a href="https://github.com/AgnivDas97/store_count" target="_blank">
+                <button class="btn">View Project</button>
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="github" class="fade-in">
+    <h2>GitHub Stats</h2>
+
+    <div style="text-align:center;">
+        <img src="https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=default" alt="GitHub Stats" style="max-width:100%; border-radius:12px;">
+    </div>
+
+</section>
+
+<section id="blog" class="fade-in">
+    <h2>Blog Posts</h2>
+
+    <div class="blog-slider">
+        <div class="blog-track">
+
+            <div class="card">
+                <h3>𝗝𝗮𝘃𝗮𝗦𝗰𝗿𝗶𝗽𝘁 𝗶𝘀 𝗙𝗮𝗺𝗼𝘂𝘀</h3>
+                <p>
+                    According to the 2024 Stack Overflow Developer Survey, JavaScript remains
+                    the most widely used programming language, with 62.3% of developers reporting extensive use.
+                </p>
+
+                <a href="https://www.linkedin.com/posts/agniv-das-40ab13244_connections-javascript-webdevelopment-activity-7327594633339793411-ZCLa"
+                   target="_blank">
+                    <button class="btn">Read More</button>
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲</h3>
+                <p>
+                    Build Robust Systems: It provides the foundational blueprint,
+                    ensuring stability and reliability.
+                </p>
+
+                <a href="https://www.linkedin.com/posts/agniv-das-40ab13244_connections-awsarchitecture-cloudcomputing-activity-7338633467947028482-MM-u"
+                   target="_blank">
+                    <button class="btn">Read More</button>
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Redis: The Speed Demon for Data</h3>
+                <p>
+                    In-Memory Store: Keeps data in RAM for lightning-fast access,
+                    delivering sub-millisecond response times.
+                </p>
+
+                <a href="https://www.linkedin.com/posts/agniv-das-40ab13244_redis-connections-redis-activity-7345542694892371968-lbZd"
+                   target="_blank">
+                    <button class="btn">Read More</button>
+                </a>
+            </div>
+
+            <!-- Duplicate for seamless loop -->
+
+            <div class="card">
+                <h3>My Middleware</h3>
+                <p>
+                    Middleware is like love life: It's technically running,
+                    but there's no actual connection and it occasionally throws an unexplained error.
+                </p>
+
+                <a href="https://www.linkedin.com/posts/agniv-das-40ab13244_connections-activity-7394121670715686912-IClJ"
+                   target="_blank">
+                    <button class="btn">Read More</button>
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Vibe Coding or Replacement of Thinking</h3>
+                <p>
+                    AI and vibe coding can increase productivity,
+                    but they should support developers—not replace thinking.
+                </p>
+
+                <a href="https://www.linkedin.com/posts/agniv-das-40ab13244_connections-activity-7439734824325763072-vAYG"
+                   target="_blank">
+                    <button class="btn">Read More</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<section id="about" class="fade-in">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+My core strength lies in React.js, where I focus on crafting clean, responsive, and intuitive user interfaces. I also have hands-on experience in backend development using Node.js, Express, and .NET, enabling me to deliver complete end-to-end solutions.
+<br><br>
+I’m passionate about creating seamless user experiences and continuously exploring modern technologies to build impactful digital products.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="fade-in">
+    <h2>Contact</h2>
+
+    <div class="contact-container">
+
+        <!-- Location & Contact Details -->
+        <div class="contact-info">
+            <h3>Get in touch 📍</h3>
+            <p><strong>Location:</strong> Bangalore, Karnataka, India</p>
+            <p><strong>Email:</strong> agnivdas091@gmail.com</p>
+            <p><strong>Phone:</strong> +91 8617508342</p>
+            <p>I am available for freelance work, and full-time opportunities. Feel free to reach out anytime!</p>
+        </div>
+
+        <!-- Mail Form Section -->
         <div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <h3>Send me a message ✉️</h3>
+            <form
+  action="https://formspree.io/f/mvzvpzao"
+  method="POST"
+>
+<label>
+    <input type="text" id="name" placeholder="Your Name" required>
+</label>
+  <label>
+    <input type="email" name="email" id="email" placeholder="Your Email" required>
+  </label>
+  <label>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit" class="btn">Send Message</button>
+</form>
         </div>
-    </nav>
-    <nav id="hamburger-nav">
-        <div class="logo">Agniv Das</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-            </div>
-        </div>
-    </nav>
-    <section id="profile">
-        <div class="section__pic-container">
-            <img src="./assets/profile-pic.png" alt="Agniv Das profile picture" />
-        </div>
-        <div class="section__text">
-            <p class="section__text__p1">Hello, I'm</p>
-            <h1 class="title">Agniv Das</h1>
-            <p class="section__text__p2">Frontend Developer</p>
-            <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/AgnivDas_Resume_SD2.pdf')">
-                    Download CV
-                </button>
-                <button class="btn btn-color-1" onclick="location.href='./#contact'">
-                    Contact Info
-                </button>
-            </div>
-            <div id="socials-container">
-                <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
-                    onclick="location.href='https://www.linkedin.com/in/agniv-das-40ab13244'" />
-                <img src="./assets/github.png" alt="My Github profile" class="icon"
-                    onclick="location.href='https://github.com/AgnivDas97'" />
-            </div>
-            <div class="text-container">
-                    <br/>
-                    Hello there! 👋 I work as a software developer at a marketing and analytics-based company. My main focus is front-end development using 
-                    <b>React.js</b>. I have over four years of hands-on experience in this field, contributing to the creation of dynamic and user-friendly interfaces.
-                
-            </div>
-        </div>
-    </section>
-    <section id="about">
-        <p class="section__text__p1">Get To Know More</p>
-        <h1 class="title">About Me</h1>
-        <div class="section-container">
-            <div class="section__pic-container">
-                <img src="./assets/about-pic.png" alt="Profile picture" class="about-pic" />
-            </div>
-            <div class="about-details-container">
-                <div class="about-containers">
-                    <div class="details-container">
-                        <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-                        <h3>Experience</h3>
-                        <p>4.5+ years <br />Frontend Development</p>
-                    </div>
-                    <div class="details-container">
-                        <img src="./assets/education.png" alt="Education icon" class="icon" />
-                        <h3>Education</h3>
-                        <p>B.Tech as Electronics and Communication Engineering</p>
-                    </div>
-                </div>
-                <div class="text-container">
-                    <p>
-                    Hello! 👋 I'm Agniv Das, a passionate web application developer with 4 years of hands-on experience in the field. My expertise
-                    primarily revolves around front-end development, and I have a strong command of various technologies that enable me to
-                    create stunning and responsive web applications.
-                    <br>
-                    My journey in the tech world has been fueled by my love for creating user-friendly and visually appealing interfaces.
-                    Over the past two years, I've been dedicated to honing my skills, with a special focus on React.js. I believe in the
-                    power of React to build dynamic, high-performance web applications, and I'm excited to continue exploring its endless
-                    possibilities. 🌟
-                    </p>
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
-    </section>
-    <section id="experience">
-        <p class="section__text__p1">Explore My</p>
-        <h1 class="title">Experience</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Frontend Development</h2>
-                    <div class="article-container">
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>React JS</h3>
-                                <p>Experienced</p>                         
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>HTML</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>CSS</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>JavaScript</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>TypeScript</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>Material UI</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Other Experience</h2>
-                    <div class="article-container">
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>SQL</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>.NET</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>Node JS</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>Express JS</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>Git</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>BitBucket</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                            <div>
-                                <h3>Jira</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
-    </section>
-    <section id="projects">
-        <p class="section__text__p1">Browse My Recent</p>
-        <h1 class="title">Projects</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/ChatBotApplication.png" alt="ChatBotApplication" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title project-title">Real Time Chat Application</h2>
-                    <h5>MERN Application (MongoDB, Express JS, React JS, Node JS) </h5>
-                    <br>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/AgnivDas97/Real-Time-ChatApplication'">
-                            Github
-                        </button>
-                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button> -->
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/typeflow.jpeg" alt="type-flow" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title project-title">Type Flow</h2>
-                    <h5>MERN Application (MongoDB, Express JS, React JS, Node JS) </h5>
-                    <br>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/AgnivDas97/TypeFlow.git'">
-                            Github
-                        </button>
-                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button> -->
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/products-List.PNG" alt="Project 2" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title project-title">Store Product Counts</h2>
-                    <h5>.NET Application (Using .Net Core 3.1 Web API as a target framework) </h5>
-                    <br>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/AgnivDas97/store_count'">
-                            Github
-                        </button>
-                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button> -->
-                    </div>
-                </div>
-                <!-- <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/project-3.png" alt="Project 3" class="project-img" />
-                    </div>
-                    <h2 class="experience-sub-title project-title">Project Three</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Github
-                        </button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-        <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
-    </section>
-    <section id="contact">
-        <p class="section__text__p1">Get in Touch</p>
-        <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-                <p><a href="mailto:examplemail@gmail.com">agnivdas091@gmail.com</a></p>
-            </div>
-            <div class="contact-info-container">
-                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-                <p><a href="https://www.linkedin.com/in/agniv-das-40ab13244">LinkedIn</a></p>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-        <p>Copyright &#169; 2023 Agniv Das. I Hope You Have A Good Experience. </p>
-    </footer>
-    <script src="script.js"></script>
+
+    </div>
+
+</section>
+
+<section id="social" class="fade-in">
+    <h2>Connect With Me</h2>
+
+    <div class="social-icons">
+        <a href="https://github.com/AgnivDas97" target="_blank">🐙</a>
+        <a href="https://www.linkedin.com/in/agniv-das-40ab13244" target="_blank">💼</a>
+        <!-- <a href="https://twitter.com/yourusername" target="_blank">🐦</a> -->
+        <a href="mailto:agnivdas091@email.com">✉️</a>
+        <!-- <a href="https://instagram.com/yourusername" target="_blank">📸</a> -->
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Alex Carter | Developer Portfolio</p>
+</footer>
+
+<!-- Resume Preview Modal -->
+<div class="modal" id="resumeModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeResume()">&times;</span>
+        <h3>Resume Preview</h3>
+        <iframe src="resume.pdf" width="100%" height="400px"></iframe>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="projectModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+    </div>
+</div>
+
+<script>
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    const btn = document.querySelector('.dark-toggle');
+    btn.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+}
+
+window.addEventListener("scroll", function () {
+    document.body.classList.toggle("scrolled", window.scrollY > 20);
+
+    const btn = document.querySelector('.back-to-top');
+    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+const stickers = ['🚀','💻','⚡','🔥','✨','🧠','🎯','🌟'];
+
+function createSticker() {
+    const sticker = document.createElement('div');
+    sticker.className = 'sticker';
+    sticker.innerText = stickers[Math.floor(Math.random() * stickers.length)];
+    sticker.style.left = Math.random() * 100 + 'vw';
+    sticker.style.animationDuration = (6 + Math.random() * 6) + 's';
+    document.body.appendChild(sticker);
+
+    setTimeout(() => sticker.remove(), 12000);
+}
+
+setInterval(createSticker, 1200);
+
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("active");
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById("navLinks").classList.remove("active");
+    });
+});
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const btn = document.querySelector('.dark-toggle');
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        btn.textContent = "☀️ Light";
+    }
+});
+
+/* Modal logic */
+function openModal(title, description) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDescription').innerText = description;
+    document.getElementById('projectModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('projectModal').style.display = 'none';
+}
+
+/* Contact form validation */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('successMessage').style.display = 'block';
+    this.reset();
+});
+
+
+
+
+
+/* Project filtering */
+function searchProjects() {
+    const input = document.getElementById('projectSearch').value.toLowerCase();
+    const cards = document.querySelectorAll('#projects .card');
+
+    cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        if (title.includes(input)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function filterProjects(category) {
+    const cards = document.querySelectorAll('#projects .card');
+
+    cards.forEach(card => {
+        const title = card.querySelector('h3');
+        const cat = title.getAttribute('data-category');
+
+        if (category === 'all' || cat === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+/* Resume modal */
+function openResume() {
+    document.getElementById('resumeModal').style.display = 'flex';
+}
+
+function closeResume() {
+    document.getElementById('resumeModal').style.display = 'none';
+}
+
+const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            const skills = entry.target.querySelectorAll('.progress');
+
+            skills.forEach((skill, index) => {
+
+                const width = skill.getAttribute('data-width');
+
+                setTimeout(() => {
+                    skill.style.width = width;
+                }, index * 200);
+
+            });
+
+            skillObserver.unobserve(entry.target);
+
+        }
+
+    });
+});
+
+skillObserver.observe(document.querySelector('#skills'));
+
+
+</script>
+
 </body>
 </html>

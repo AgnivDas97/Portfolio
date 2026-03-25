@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Modern Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agniv Das | Colorful Portfolio</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Agniv Das - Senior Software Engineer Portfolio. Full Stack Developer specializing in React, Node.js, and scalable web applications.">
+<meta name="keywords" content="Agniv Das, Software Engineer, Full Stack Developer, React Developer, Node.js, Portfolio">
+<meta name="author" content="Agniv Das">
+<meta property="og:title" content="Agniv Das Portfolio">
+<meta property="og:description" content="Professional software engineer portfolio showcasing projects and skills.">
+<meta property="og:type" content="website">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+    background: #ffffff;
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    color: #111;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 20px;
+    background: #ffffff;
+    backdrop-filter: blur(16px);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    padding: 70px 20px 40px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1) rotate(3deg);
+}
+
+h1 {
+    letter-spacing: -0.02em;
+    font-size: 42px;
+    margin-bottom: 10px;
+    background: #111;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.typing {
+    font-size: 22px;
+    color: #a5b4fc;
+    height: 26px;
+    font-weight: bold;
+}
+
+nav {
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    padding: 14px;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    color: #111;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+
+nav a.active {
+    background: #111;
+    color: #fff;
+}
+
+nav a:hover {
+    background: #f3f4f6;
+    color: #111;
+    background: linear-gradient(90deg, #ff6a00, #ffdd00);
+    color: #fff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 25px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    backdrop-filter: blur(8px);
+    animation: slideUp 0.8s ease;
+}
+
+h2 {
+    margin-bottom: 15px;
+    border-bottom: 3px solid #6366f1;
+    padding-bottom: 6px;
+    color: #a5b4fc;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.project-card {
+    border: 1px solid #e5e7eb;
+    text-align: left;
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #ffffff;
+}
+
+.project-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill {
+    background: linear-gradient(90deg, #6366f1, #22c55e);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.skill:hover {
+    transform: scale(1.15);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+}
+
+footer {
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: #ffffff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* ================= MOBILE-FIRST RESPONSIVE TWEAKS ================= */
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        justify-content: flex-end;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        padding: 15px 0;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    header {
+        padding: 50px 15px 30px;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .typing {
+        font-size: 16px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav ul {
+        gap: 18px;
+    }
+
+}
+
+/* Large screens optimization */
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 1200px;
+    }
+
+    h1 {
+        font-size: 46px;
+    }
+
+}
+
+
+
+/* ================= DARK / LIGHT MODE ================= */
+
+body.light {
+    background: #f5f7fa;
+    color: #111;
+}
+
+body.light section {
+    background: white;
+    color: #111;
+}
+
+.mode-toggle {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+/* ================= LOADING ANIMATION ================= */
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #00f5d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ================= SCROLL PROGRESS BAR ================= */
+
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #22c55e);
+    z-index: 2000;
+    transition: width 0.1s ease-out;
+}
+
+
+
+/* ================= GRADIENT MESH BACKGROUND ================= */
+
+/* Apple style removes colorful mesh background */
+.mesh-bg {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(99,102,241,0.35), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139,92,246,0.35), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(34,197,94,0.25), transparent 50%);
+    z-index: -1;
+}
+
+/* ================= CURSOR GLOW ================= */
+
+.cursor-glow {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(99,102,241,0.35), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+/* ================= THEME SWITCHER ================= */
+
+.theme-switcher {
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    gap: 8px;
+    z-index: 3000;
+}
+
+.theme-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.theme-indigo { background: #6366f1; }
+.theme-emerald { background: #10b981; }
+.theme-rose { background: #f43f5e; }
+.theme-amber { background: #f59e0b; }
+
+</style>
+</head>
+
+<body>
+
+<div class="mesh-bg"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="theme-switcher">
+<div class="theme-btn theme-indigo" onclick="setTheme('#6366f1')"></div>
+<div class="theme-btn theme-emerald" onclick="setTheme('#10b981')"></div>
+<div class="theme-btn theme-rose" onclick="setTheme('#f43f5e')"></div>
+<div class="theme-btn theme-amber" onclick="setTheme('#f59e0b')"></div>
+</div>
+
+<div id="loader">
+<div class="spinner"></div>
+</div>
+
+<button class="mode-toggle" onclick="toggleMode()">Toggle Mode</button>
+
+<div id="progressBar"></div>
+
+<header>
+
+<img src="profile.jpg" alt="Profile Photo" class="profile-pic">
+
+<h1>AGNIV DAS</h1>
+
+<div class="typing" id="typing"></div>
+
+<p>
+📞 +91 8617508342 | ✉️ agnivdas091@gmail.com | 📍 Bangalore, India
+</p>
+
+<a href="resume.pdf" download class="btn">Download Resume</a>
+
+<div class="social-icons" style="margin-top:15px; display:flex; gap:15px; justify-content:center; font-size:22px;">
+<a href="https://github.com/" target="_blank" style="color:white; text-decoration:none;">🐙 GitHub</a>
+<a href="https://linkedin.com/" target="_blank" style="color:white; text-decoration:none;">💼 LinkedIn</a>
+</div>
+
+</header>
+
+<nav>
+
+<button class="hamburger" onclick="toggleMenu()">☰</button>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#education">Education</a></li>
+</ul>
+</ul>
+</nav>
+
+<div class="container">
+
+<section id="summary">
+<h2>Summary</h2>
+<p>
+Experienced Software Developer with strong focus on scripting, testing, and platform design.
+Skilled in building scalable full-stack applications, optimizing performance, and implementing efficient code solutions.
+</p>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+
+<h3>Senior Software Engineer — IPSOS MMA</h3>
+<p>May 2025 — Present</p>
+<ul>
+<li>Lead development of scalable full-stack features</li>
+<li>Mentored junior developers</li>
+<li>Architected reusable components</li>
+</ul>
+
+<br>
+
+<h3>Software Engineer — IPSOS MMA</h3>
+<p>Oct 2021 — May 2025</p>
+<ul>
+<li>Developed MERN analytics dashboard</li>
+<li>Built REST APIs</li>
+<li>Deployed applications on AWS</li>
+</ul>
+
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="project-card" onclick="openModal(this)" data-title="Project Details" data-desc="Detailed description of this project including technologies used, features, and challenges solved.">
+<img src="project-image.png" alt="Project Screenshot" class="project-img">
+<h3>Real-time Chatbot</h3>
+<p>MERN-based real-time chat app using Socket.IO.</p>
+<a href="#" class="btn">GitHub</a>
+</div>
+
+<div class="project-card" onclick="openModal(this)" data-title="Project Details" data-desc="Detailed description of this project including technologies used, features, and challenges solved.">
+<img src="project-image.png" alt="Project Screenshot" class="project-img">
+<h3>Typing Test Application (TypeFlow)</h3>
+<p>Typing speed tracking app with performance analytics.</p>
+<a href="#" class="btn">GitHub</a>
+</div>
+
+<div class="project-card" onclick="openModal(this)" data-title="Project Details" data-desc="Detailed description of this project including technologies used, features, and challenges solved.">
+<img src="project-image.png" alt="Project Screenshot" class="project-img">
+<h3>Product Store Application</h3>
+<p>ASP.NET Core CRUD product management system.</p>
+<a href="#" class="btn">GitHub</a>
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+
+<div class="skills" style="flex-direction:column; gap:18px;">
+
+<div>
+<p>React.js</p>
+<div style="background:#ddd; border-radius:8px; overflow:hidden;">
+<div style="width:90%; background:linear-gradient(90deg,#00f5d4,#00bbf9); padding:6px; color:black;">90%</div>
+</div>
+</div>
+
+<div>
+<p>Node.js</p>
+<div style="background:#ddd; border-radius:8px; overflow:hidden;">
+<div style="width:85%; background:linear-gradient(90deg,#00f5d4,#00bbf9); padding:6px; color:black;">85%</div>
+</div>
+</div>
+
+<div>
+<p>JavaScript</p>
+<div style="background:#ddd; border-radius:8px; overflow:hidden;">
+<div style="width:88%; background:linear-gradient(90deg,#00f5d4,#00bbf9); padding:6px; color:black;">88%</div>
+</div>
+</div>
+<span class="skill">React.js</span>
+<span class="skill">Node.js</span>
+<span class="skill">JavaScript</span>
+<span class="skill">MongoDB</span>
+<span class="skill">PostgreSQL</span>
+<span class="skill">AWS</span>
+<span class="skill">REST API</span>
+<span class="skill">Git</span>
+<span class="skill">Agile</span>
+</div>
+
+</section>
+
+<section id="education">
+<h2>Education</h2>
+
+<p><strong>B.Tech in Electronics and Communication Engineering</strong></p>
+<p>Techno India College Banipur (2016 — 2020)</p>
+
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+
+<form action="mailto:agnivdas091@gmail.com" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:12px;">
+
+<input type="text" name="name" placeholder="Your Name" required style="padding:10px; border-radius:6px; border:none;">
+
+<input type="email" name="email" placeholder="Your Email" required style="padding:10px; border-radius:6px; border:none;">
+
+<textarea name="message" placeholder="Your Message" rows="5" required style="padding:10px; border-radius:6px; border:none;"></textarea>
+
+<button type="submit" class="btn">Send Message</button>
+
+</form>
+
+</section>
+
+</div>
+
+<footer>
+<p>© 2026 Agniv Das | Colorful Portfolio</p>
+<!-- PROJECT MODAL -->
+
+<div id="projectModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:4000;">
+
+<div style="background:white; color:black; padding:25px; border-radius:12px; max-width:500px; width:90%; position:relative;">
+
+<button onclick="closeModal()" style="position:absolute; right:10px; top:10px; border:none; background:red; color:white; padding:6px 10px; border-radius:6px; cursor:pointer;">X</button>
+
+<h2 id="modalTitle"></h2>
+<p id="modalDesc"></p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+const roles = [
+    "Senior Software Engineer",
+    "Full Stack Developer",
+    "React Developer",
+    "Node.js Developer"
+];
+
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
+
+function type() {
+    current = roles[i];
+
+    if (isDeleting) {
+        document.getElementById("typing").textContent = current.substring(0, j--);
+    } else {
+        document.getElementById("typing").textContent = current.substring(0, j++);
+    }
+
+    if (!isDeleting && j === current.length) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+        return;
+    }
+
+    if (isDeleting && j === 0) {
+        isDeleting = false;
+        i++;
+        if (i === roles.length) i = 0;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+
+type();
+
+// ================= HAMBURGER MENU =================
+
+// ================= ACTIVE SECTION HIGHLIGHT =================
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll", () => {
+
+    // ===== Scroll Progress Bar =====
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    document.getElementById("progressBar").style.width = scrollPercent + "%";
+    let currentSection = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
+        }
+    });
+});
+
+// ================= HAMBURGER MENU =================
+
+// Close mobile menu after clicking a link
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        const navMenu = document.querySelector("nav ul");
+        navMenu.classList.remove("show");
+    });
+});
+
+// ================= FADE-IN ANIMATION ON SCROLL =================
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+document.querySelectorAll("section").forEach(section => {
+    section.style.opacity = 0;
+    section.style.transform = "translateY(40px)";
+    section.style.transition = "all 0.6s ease";
+    observer.observe(section);
+});
+
+// ================= PROJECT MODAL =================
+
+function openModal(card) {
+    const modal = document.getElementById("projectModal");
+    document.getElementById("modalTitle").textContent = card.dataset.title;
+    document.getElementById("modalDesc").textContent = card.dataset.desc;
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("projectModal").style.display = "none";
+}
+
+// ================= DARK MODE =================
+
+function toggleMode() {
+    document.body.classList.toggle("light");
+}
+
+// ================= LOADER =================
+
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
+});
+
+// ================= CURSOR GLOW FOLLOW =================
+
+const glow = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", e => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+
+// ================= THEME SWITCHER =================
+
+function setTheme(color) {
+    document.documentElement.style.setProperty('--accent', color);
+    document.querySelectorAll('.btn, nav a.active').forEach(el => {
+        el.style.background = color;
+    });
+}
+
+function toggleMenu() {
+    const navMenu = document.querySelector("nav ul");
+    navMenu.classList.toggle("show");
+}
+
+</script>
+
+</body>
+</html>
